@@ -15,7 +15,7 @@ trigger:
   - pull_request
   - tag
   - promote
-  - rollback
+    #  - rollback
 
 
     # kind: pipeline
