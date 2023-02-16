@@ -11,8 +11,6 @@ steps:
 
 trigger:
   event:
-  - cron
-  - custom
   - push
   - pull_request
   - tag
