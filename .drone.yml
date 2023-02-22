@@ -1,0 +1,52 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build
+  image: golang
+  commands:
+  - go build
+  - go test
+
+trigger:
+  event:
+  - push
+  - pull_request
+  - tag
+    #- promote
+    #  - rollback
+
+
+    # kind: pipeline
+    # type: docker
+    # name: default
+    # 
+    # steps:
+    # - name: greeting
+    #   image: alpine
+    #   commands:
+    #   - echo hello
+    #   - echo world
+    #clone:
+    #  git:
+    #    image: plugins/git
+    #    depth: 10
+    #pipeline:
+    #  build:
+    #    image: /bbgo/golang:1.18
+    #    commands:
+    #      - go build -mod=readonly
+    #  test:
+    #    image: /bbgo/golang:1.18
+    #    commands:
+    #      - go test -mod=readonly -coverprofile="coverage.out" ./...
+    #  lint:
+    #    image: golangci-lint:latest
+    #    environment:
+    #    commands:
+    #      - go get ./...
+    #      - golangci-lint run
+    #  code-analysis:
+    #    image: sonarqube
+    #    pull: true
